@@ -3,26 +3,32 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 
 device {
     CONFIG(debug, debug|release) {
-        SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
+                 $$quote($$BASEDIR/src/ProjectModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp)
+        HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
+                 $$quote($$BASEDIR/src/ProjectModel.h)
     }
 
     CONFIG(release, debug|release) {
-        SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
+                 $$quote($$BASEDIR/src/ProjectModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp)
+        HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
+                 $$quote($$BASEDIR/src/ProjectModel.h)
     }
 }
 
 simulator {
     CONFIG(debug, debug|release) {
-        SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+        SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
+                 $$quote($$BASEDIR/src/ProjectModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
-        HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp)
+        HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
+                 $$quote($$BASEDIR/src/ProjectModel.h)
     }
 }
 

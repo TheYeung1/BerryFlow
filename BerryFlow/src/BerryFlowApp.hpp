@@ -20,12 +20,12 @@ class QTranslator;
  *
  */
 
-class ApplicationUI : public QObject
+class BerryFlowApp : public QObject
 {
     Q_OBJECT
 public:
-    ApplicationUI(bb::cascades::Application *app);
-    virtual ~ApplicationUI() { }
+    BerryFlowApp(bb::cascades::Application *app);
+    virtual ~BerryFlowApp() { }
 private slots:
     void onSystemLanguageChanged();
 private:

@@ -1,13 +1,14 @@
-#include "applicationui.hpp"
+#include "BerryFlowApp.hpp"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
+#include "ProjectModel.h"
 
 using namespace bb::cascades;
 
-ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
+BerryFlowApp::BerryFlowApp(bb::cascades::Application *app) :
         QObject(app)
 {
     // prepare the localization
@@ -21,6 +22,11 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     // initial load
     onSystemLanguageChanged();
 
+
+
+    // Registering the model so that it can be accessed in QML
+    qmlRegisterType<ProjectModel>("com.BerryFlow.ProjectData", 1, 0, "ProjectModel");
+
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
@@ -32,7 +38,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
     app->setScene(root);
 }
 
-void ApplicationUI::onSystemLanguageChanged()
+void BerryFlowApp::onSystemLanguageChanged()
 {
     QCoreApplication::instance()->removeTranslator(m_pTranslator);
     // Initiate, load and install the application translation files.

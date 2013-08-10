@@ -1,0 +1,20 @@
+[
+{
+	"title":"Sample1",
+	"start":"8/1/2013",
+	"end":"8/30/2013",
+	"description":"This is a test",
+	"creator": "0",
+	"admin": "0",
+	"status": "active"
+},
+{
+	"title":"Sample2",
+	"start":"8/1/2013",
+	"end":"8/30/2013",
+	"description":"This is a test",
+	"creator": "0",
+	"admin": "0",
+	"status": "active"
+}
+]
