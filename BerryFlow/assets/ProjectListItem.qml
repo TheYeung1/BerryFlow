@@ -7,7 +7,6 @@ Container {
     property alias duedate: dueDate.text
     
     preferredHeight: 120
-    preferredWidth: 768
 
     
     horizontalAlignment: HorizontalAlignment.Fill

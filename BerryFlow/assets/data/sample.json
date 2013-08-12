@@ -6,7 +6,17 @@
 	"description":"This is a test",
 	"creator": "0",
 	"admin": "0",
-	"status": "active"
+	"status": "active",
+	"steps":[
+	    { "no":1, 
+	      "title": "Create JSON", 
+	      "due": "8/2/2013", 
+	      "detail": "Create the JSON data model for the app" },
+	    { "no":2, 
+	      "title": "Create ListView UI", 
+	      "due": "8/17/2013", 
+	      "detail": "Have the simple frame of the UI in place" }
+	]
 },
 {
 	"title":"Sample2",
@@ -15,6 +25,20 @@
 	"description":"This is a test",
 	"creator": "0",
 	"admin": "0",
-	"status": "active"
+	"status": "active",
+	"steps":[
+	    {
+	        "no":1,
+	        "title": "Create JSON",
+	        "due": "8/2/2013",
+	        "detail": "Create the JSON data model for the app"
+	    },
+	    {
+	        "no":2,
+	        "title": "Create ListView UI",
+	        "due": "8/17/2013",
+	        "detail": "Have the simple frame of the UI in place"
+	    }
+	]
 }
 ]

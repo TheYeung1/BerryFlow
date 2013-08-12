@@ -44,7 +44,7 @@ int ProjectModel::childCount(const QVariantList &indexPath) {
 		return this->internalDB.length();
 	} else if(indexPath.length() == 1) {
 		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
-		int count = map["predictions"].toList().length();
+		int count = map["steps"].toList().length();
 		return count;
 	}
 	return 0;
@@ -55,28 +55,27 @@ bool ProjectModel::hasChildren(const QVariantList &indexPath) {
 	return false;
 }
 QString ProjectModel::itemType(const QVariantList &indexPath) {
-//    if (indexPath.length() == 1 && indexPath.value(0).toInt(NULL) == 0) {
-//        return QString("header");
-//    } else {
-        return QString::null;
-    //}
+	if (indexPath.length() == 1){
+		return QString("project");
+	} else if (indexPath.length() == 2){
+		return QString("step");
+	} else {
+		return QString::null;
+	}
 }
 QVariant ProjectModel::data(const QVariantList &indexPath) {
 
-	//if(indexPath.length() == 1) {
+	if(indexPath.length() == 1) {
 		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
-		qDebug() << indexPath.length();
-		int i;
-		for (i = 0; i < map.keys().length(); i++){
-			qDebug() << map.keys()[i];
-		}
+
 		return QVariant(map);
-	//}
-//	else if(indexPath.length() == 2) {
-//		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
-//		return map["predictions"].toList().value(indexPath.value(1).toInt(NULL));
-//	}
-	//return QVariant();
+	}
+	else if(indexPath.length() == 2) {
+		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
+		QVariantMap stepsMap = map["steps"].toMap();
+		return map["steps"].toList().value(indexPath.value(1).toInt(NULL));
+	}
+	return QVariant();
 }
 
 
