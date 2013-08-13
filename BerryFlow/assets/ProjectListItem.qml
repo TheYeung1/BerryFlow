@@ -33,16 +33,14 @@ Container {
             id: projectName
             text: "Project Name"
             horizontalAlignment: HorizontalAlignment.Left
-            verticalAlignment: VerticalAlignment.Top
-            textStyle.fontSizeValue: 14
+            textStyle.fontSize: FontSize.Large
         }
         Label {
             id: projectDescription
             text: "This is the project description"
             horizontalAlignment: HorizontalAlignment.Left
-            verticalAlignment: VerticalAlignment.Bottom
             textStyle.color: Color.Gray
-            textStyle.fontSizeValue: 8
+            textStyle.fontSize: FontSize.Small
         }
     }
     

@@ -15,60 +15,96 @@ Page {
          
          }
     	
-    	Container {
-        	Label {
-             text: "You are here"
+    	attachedObjects: [
+    	    TextStyleDefinition {
+            	id: projectTitle
+            	base: SystemDefaults.TextStyles.TitleText
+            	fontSize: FontSize.Large 
             }
+    	]
+    	
+    	Container {
+    	    leftPadding: 10
+        	Label {
+	             text: detailData.title
+	             textStyle.fontSizeValue: 20
+	             horizontalAlignment: HorizontalAlignment.Fill
+	             textStyle {
+                     base: SystemDefaults.TextStyles.TitleText
+                     fontSize: FontSize.Large 
+	             }        	  
+            }
+        	Label {
+            	text: detailData.description
+            	horizontalAlignment: HorizontalAlignment.Fill 
+            	multiline: true
+            	textStyle {
+            	    base: SystemDefaults.TextStyles.BodyText
+            	    fontSize: FontSize.Medium
+            	}
+            }
+        	Label {
+            	text: "Start: " + detailData.start
+            }
+        	Label{
+        	    text: "End: " + detailData.end
+        	}
+        	
         }
     	
-    	// the list of steps
-    	ListView {
-    	    id: stepListView
-            layout: StackListLayout {
-                headerMode: ListHeaderMode.None
-            }
-        	listItemComponents: [
-        	    ListItemComponent {
-        	        type: "step"
-                	Container {
-                	    preferredHeight: 120
-
-                        Divider {
-                            topMargin: 0
-                            bottomMargin: 0
-                        }
-                	    horizontalAlignment: HorizontalAlignment.Center
-                	    layout: StackLayout {
-                        	orientation: LayoutOrientation.LeftToRight 
-                        }
-
-                	    Label{
-                	        text: ListItemData.no
-                	        horizontalAlignment: HorizontalAlignment.Left
-                	        verticalAlignment: VerticalAlignment.Center
-                	        textStyle.fontSizeValue: 20
-                	    }
-                    	Container {
-                        	layout: StackLayout {
-                            	orientation: LayoutOrientation.TopToBottom
+    	Container {
+        
+	    	// the list of steps
+	    	ListView {
+	    	    id: stepListView
+	            
+	            horizontalAlignment: horizontalAlignment.Center
+	            leftPadding: 10
+	            rightPadding: 5
+	        	listItemComponents: [
+	        	    ListItemComponent {
+	        	        type: "step"
+	                	Container {
+	                	    preferredHeight: 120
+	                        Divider {
+	                            topMargin: 0
+	                            bottomMargin: 0
+	                        }
+	                        layout: DockLayout {
+                             
                             }
-                        	Label{
-                        	    text: ListItemData.title
-                        	    horizontalAlignment: HorizontalAlignment.Left
-                        	    verticalAlignment: VerticalAlignment.Top
-                        	    textStyle.fontSizeValue: 14
-                        	}
-                        	Label{
-                        	    text: ListItemData.detail
-                        	    horizontalAlignment: HorizontalAlignment.Left
-                        	    verticalAlignment: VerticalAlignment.Bottom
-                        	    textStyle.fontSizeValue: 8
-                        	    textStyle.color: Color.Gray
-                        	}
-                        }
-                    }
-                }
-        	]
-        }    
+	                	    
+	                	    Label{
+	                	        text: ListItemData.no
+	                	        verticalAlignment: VerticalAlignment.Center 
+	                	        horizontalAlignment: horizontalAlignment.Left
+	                	        textStyle.fontSize: FontSize.Large
+	                	    }
+	                	    
+	                    	Container {
+	                    	    preferredHeight: 120
+	                        	layout: StackLayout {
+	                            	orientation: LayoutOrientation.TopToBottom
+	                            }
+	                        	
+	                        	horizontalAlignment: HorizontalAlignment.Center
+	                        	verticalAlignment: VerticalAlignment.Top
+	                        	
+	                        	Label{
+	                        	    text: ListItemData.title
+	
+	                        	    textStyle.fontSize: FontSize.Medium
+	                        	}
+	                        	Label{
+	                        	    text: ListItemData.detail
+	                        	    textStyle.fontSize: FontSize.Small
+	                        	    textStyle.color: Color.Gray
+	                        	}
+	                        }
+	                    }
+	                }
+	        	]
+	        }
+	    }    
     }
 }
