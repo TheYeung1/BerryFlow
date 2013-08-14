@@ -1,6 +1,7 @@
 import bb.cascades 1.0
 
 
+// an item representing a project. Displayed in the ProjectListView
 Container {
     property alias name: projectName.text
     property alias description: projectDescription.text

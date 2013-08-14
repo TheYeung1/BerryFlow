@@ -10,10 +10,12 @@
 	"steps":[
 	    { "no":1, 
 	      "title": "Create JSON", 
+	      "start": "8/1/2013",
 	      "due": "8/2/2013", 
 	      "detail": "Create the JSON data model for the app" },
 	    { "no":2, 
-	      "title": "Create ListView UI", 
+	      "title": "Create ListView UI",
+	      "start": "8/1/2013", 
 	      "due": "8/17/2013", 
 	      "detail": "Have the simple frame of the UI in place" }
 	]
@@ -30,12 +32,14 @@
 	    {
 	        "no":1,
 	        "title": "Create JSON",
+	        "start": "8/1/2013",
 	        "due": "8/2/2013",
 	        "detail": "Create the JSON data model for the app"
 	    },
 	    {
 	        "no":2,
 	        "title": "Create ListView UI",
+	        "start": "8/1/2013",
 	        "due": "8/17/2013",
 	        "detail": "Have the simple frame of the UI in place"
 	    }

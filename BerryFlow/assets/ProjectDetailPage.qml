@@ -24,7 +24,7 @@ Page {
     	]
     	
     	Container {
-    	    leftPadding: 10
+    	    leftPadding: 14
         	Label {
 	             text: detailData.title
 	             textStyle.fontSizeValue: 20
@@ -43,68 +43,94 @@ Page {
             	    fontSize: FontSize.Medium
             	}
             }
-        	Label {
-            	text: "Start: " + detailData.start
-            }
-        	Label{
-        	    text: "End: " + detailData.end
-        	}
+        }
         	
+    	Header {
+        	title: "Start"
+        }
+    	Container {
+        	leftPadding: 14
+            Label {
+                text: detailData.start
+            }
         }
     	
+        Header {
+            title: "Due" 
+        }
+        Container {
+            leftPadding: 14
+            Label {
+                text: detailData.end
+            }
+        }
+        	
+    	
     	Container {
-        
+        	Header {
+             	title: "Steps"
+            }
 	    	// the list of steps
 	    	ListView {
 	    	    id: stepListView
 	            
 	            horizontalAlignment: horizontalAlignment.Center
-	            leftPadding: 10
+	            leftPadding: 14
 	            rightPadding: 5
 	        	listItemComponents: [
 	        	    ListItemComponent {
 	        	        type: "step"
-	                	Container {
-	                	    preferredHeight: 120
-	                        Divider {
-	                            topMargin: 0
-	                            bottomMargin: 0
-	                        }
-	                        layout: DockLayout {
-                             
-                            }
-	                	    
-	                	    Label{
-	                	        text: ListItemData.no
-	                	        verticalAlignment: VerticalAlignment.Center 
-	                	        horizontalAlignment: horizontalAlignment.Left
-	                	        textStyle.fontSize: FontSize.Large
-	                	    }
-	                	    
-	                    	Container {
-	                    	    preferredHeight: 120
-	                        	layout: StackLayout {
-	                            	orientation: LayoutOrientation.TopToBottom
-	                            }
-	                        	
-	                        	horizontalAlignment: HorizontalAlignment.Center
-	                        	verticalAlignment: VerticalAlignment.Top
-	                        	
-	                        	Label{
-	                        	    text: ListItemData.title
-	
-	                        	    textStyle.fontSize: FontSize.Medium
-	                        	}
-	                        	Label{
-	                        	    text: ListItemData.detail
-	                        	    textStyle.fontSize: FontSize.Small
-	                        	    textStyle.color: Color.Gray
-	                        	}
-	                        }
-	                    }
+	        	        ProjectStepItem {
+                      		step: ListItemData.no
+                      		stepTitle: ListItemData.title
+                      		stepDetail: ListItemData.detail
+                      	}
 	                }
 	        	]
+	        	
+	        	onTriggered: {
+              		pushStepDetailPage(indexPath);
+              	}
+	        
+	            function pushStepDetailPage(indexPath){
+	                var p = stepDetailPageDefinition.createObject();
+	                var selectedItemData = dataModel.data(indexPath);
+	                p.stepData = selectedItemData;
+	                navPane.push(p);
+	            }
 	        }
+	    	
 	    }    
     }
+    actions: [
+        ActionItem {
+            title: "Add Step"
+            ActionBar.placement: ActionBarPlacement.OnBar
+            // TODO: Implement Me
+            
+        },
+        ActionItem {
+            title: "Edit Details"
+            // TODO: Implement Me 
+        },
+        ActionItem {
+            title: "View Conversation"
+            // TODO: Implement Me
+        }
+    ]
+    
+    attachedObjects: [
+        ComponentDefinition {
+            id: stepDetailPageDefinition
+	        StepDetailPage {
+	            paneProperties: NavigationPaneProperties {
+	                backButton: ActionItem {
+	                    onTriggered: {
+	                        navPane.pop();
+	                    }
+	                }
+	            }
+	        }
+	    }
+    ]
 }
