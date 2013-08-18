@@ -81,8 +81,10 @@ NavigationPane{
         }
 	    actions: [
 	        ActionItem {
-            	title: "Add Project" 
-            	// TODO: Implement Me
+            	title: "Add Project"
+                onTriggered: {
+                    addProjectSheet.open();
+                }
             },
 	        ActionItem {
             	title: "View Archive"
@@ -104,6 +106,9 @@ NavigationPane{
                     }
                 }
             }
+        },
+        EditProjectSheet {
+            id: addProjectSheet
         }
     ]
     
