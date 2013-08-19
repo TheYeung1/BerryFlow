@@ -110,11 +110,27 @@ void ProjectModel::addProject(QString projectName, QDate projectStart,
 void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepName,
 									QDate stepStart, QDate stepDue, QVariantList members,
 									QString stepDescription){
-	QVariantMap currentProject = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
+//	QVariantMap currentProject = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
+//	QVariantMap newStep;
+//	QVariantList projectSteps = currentProject["steps"].toList();
+//	qDebug() << "Before";
+//	qDebug() << currentProject["steps"];
+//	newStep["no"] = projectSteps.count() + 1;
+//	newStep["title"] = stepName;
+//	newStep["start"] = stepStart;
+//	newStep["due"] = stepDue;
+//	//TODO: finalize a way to handle members
+//	newStep["members"] = members;
+//	newStep["detail"] = stepDescription;
+//	projectSteps.append(newStep);
+//	currentProject["steps"] = projectSteps;
+//	qDebug() << "After";
+//	qDebug() << currentProject["steps"];
+//	emit itemAdded(QVariantList() << indexPath.value(0).toInt(NULL) << currentProject["steps"].toList().count() - 1);
+
+	QVariantMap& currentProject = (QVariantMap&) this->internalDB[indexPath.value(0).toInt(NULL)];
+	QVariantList& projectSteps = (QVariantList&) currentProject["steps"];
 	QVariantMap newStep;
-	QVariantList projectSteps = projectSteps = currentProject["steps"].toList();
-	qDebug() << "Before";
-	qDebug() << currentProject["steps"];
 	newStep["no"] = projectSteps.count() + 1;
 	newStep["title"] = stepName;
 	newStep["start"] = stepStart;
@@ -123,11 +139,7 @@ void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepNam
 	newStep["members"] = members;
 	newStep["detail"] = stepDescription;
 	projectSteps.append(newStep);
-	currentProject["steps"] = projectSteps;
-	qDebug() << "After";
-	qDebug() << currentProject["steps"];
 	emit itemAdded(QVariantList() << indexPath.value(0).toInt(NULL) << currentProject["steps"].toList().count() - 1);
-
 }
 
 void ProjectModel::removeItems(const QVariantList &indexPaths) {

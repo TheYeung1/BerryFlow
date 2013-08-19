@@ -5,7 +5,7 @@ Sheet {
     property variant indexPath;
     
     
-    signal addNewStep(variant indexPath, string stepName,
+    signal addNewStep(string stepName,
         			  date stepStart, date stepDue, variant stepMembers, string stepDescription);	
     
     Page {
@@ -22,9 +22,10 @@ Sheet {
                 enabled: Boolean(stepTitle.text)
                 onTriggered: {
                     addStepSheet.close();
-                    addStepSheet.addNewStep(indexPath,stepTitle.text,
+                    var A = [];
+                    addStepSheet.addNewStep(stepTitle.text,
                         stepStartDate.value,stepDueDate.value,
-                        [],stepDescription.text);
+                        A,stepDescription.text);
                 }
             }
         }

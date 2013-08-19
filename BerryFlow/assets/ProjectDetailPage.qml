@@ -136,7 +136,6 @@ Page {
 	    },
         AddStepForm {
             id: addStepForm
-            indexPath: stepListView.rootIndexPath
             onAddNewStep: {
                 listViewModel.addProjectStep(stepListView.rootIndexPath, stepName, stepStart, 
                     stepDue, stepMembers, stepDescription);
