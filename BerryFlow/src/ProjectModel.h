@@ -26,6 +26,13 @@ public:
     Q_INVOKABLE virtual QVariant data(const QVariantList &indexPath);
 
 	Q_INVOKABLE virtual void removeItems(const QVariantList &indexPaths);
+
+	Q_INVOKABLE virtual void addProject(QString projectName, QDate projectStart,
+			QDate projectEnd, QString projectDescription);
+
+	Q_INVOKABLE virtual void addProjectStep(const QVariantList &indexPath, QString stepName,
+			QDate stepStart, QDate stepDue, QVariantList members,
+			QString stepDescription);
 private:
 	QVariantList internalDB;
 	void initDatabase(const QString& filename);

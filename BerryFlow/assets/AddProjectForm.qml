@@ -1,11 +1,13 @@
 import bb.cascades 1.0
 
 Sheet{
-    id: editSheet
+    id: addProjectSheet
     
     
     // a custom signal for adding a new project
     signal addNewProject(string title, date start, date end, string description)
+    
+    property variant indexPath;
     Page{
         
         
@@ -14,15 +16,15 @@ Sheet{
         	dismissAction: ActionItem {
             	title: "Cancel"
             	onTriggered: {
-                	editSheet.close(); 
+                    addProjectSheet.close(); 
                 }
             }
         	acceptAction: ActionItem {
             	title: "Save" 
             	enabled: Boolean(projectTitle.text)
             	onTriggered: {
-                	editSheet.close();
-                	editSheet.addNewProject(projectTitle.text, projectStartDate.value, projectEndDate.value, projectDescription.text);
+                    addProjectSheet.close();
+                    addProjectSheet.addNewProject(projectTitle.text, projectStartDate.value, projectEndDate.value, projectDescription.text);
                 }
             }
         }

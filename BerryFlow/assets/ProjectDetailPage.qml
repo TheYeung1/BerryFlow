@@ -106,7 +106,9 @@ Page {
         ActionItem {
             title: "Add Step"
             ActionBar.placement: ActionBarPlacement.OnBar
-            // TODO: Implement Me
+            onTriggered: {
+                addStepForm.open();
+            }
             
         },
         ActionItem {
@@ -131,6 +133,14 @@ Page {
 	                }
 	            }
 	        }
-	    }
+	    },
+        AddStepForm {
+            id: addStepForm
+            indexPath: stepListView.rootIndexPath
+            onAddNewStep: {
+                listViewModel.addProjectStep(stepListView.rootIndexPath, stepName, stepStart, 
+                    stepDue, stepMembers, stepDescription);
+            }
+        }
     ]
 }

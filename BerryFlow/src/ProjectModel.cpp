@@ -79,29 +79,56 @@ QVariant ProjectModel::data(const QVariantList &indexPath) {
 }
 
 
-//void ProjectModel::addCity(QString cityName) {
-//	QVariantMap map;
-//	QVariantList predictions;
-//	map["text"] = cityName;
-//	map["temperature"] = 0;
-//	map["time"] = "daytime";
-//	map["condition"] = "clear";
-//
-//	QVariantMap day1; day1["day"] = "Tuesday"; day1["high"] = 0; day1["low"] = 0; day1["condition"] = "clear";
-//	QVariantMap day2; day2["day"] = "Wednesday"; day2["high"] = 0; day2["low"] = 0; day2["condition"] = "clear";
-//	QVariantMap day3; day3["day"] = "Thursday"; day3["high"] = 0; day3["low"] = 0; day3["condition"] = "clear";
-//	QVariantMap day4; day4["day"] = "Friday"; day4["high"] = 0; day4["low"] = 0; day4["condition"] = "clear";
-//	QVariantMap day5; day5["day"] = "Saturday"; day5["high"] = 0; day5["low"] = 0; day5["condition"] = "clear";
-//	predictions.append(day1);
-//	predictions.append(day2);
-//	predictions.append(day3);
-//	predictions.append(day4);
-//	predictions.append(day5);
-//
-//	map["predictions"] = predictions;
-//	this->internalDB.append(map);
-//	emit itemAdded(QVariantList() << this->internalDB.count()-1);
-//}
+/*
+ * Add a project to the data model
+ * @param projectName the name of the project
+ * @param projectStart the date that this project starts
+ * @param projectEnd the date that this project is due
+ * @param projectDescription A description of this project
+ */
+void ProjectModel::addProject(QString projectName, QDate projectStart,
+							QDate projectEnd, QString projectDescription){
+	QVariantMap newProject;
+	QVariantList steps;
+	//TODO: add the QVariantList for the members
+	newProject["title"] = projectName;
+	//TODO: add the project start and end dates to the calendar
+	newProject["start"] = projectStart;
+	newProject["end"] = projectEnd;
+	newProject["description"] = projectDescription;
+	newProject["steps"] = steps;
+	//TODO: add the admin
+	//TODO: add the creator (which will be the info for the owner of this blackberry
+
+	newProject["status"] = "active"; // by default a project will be active
+
+
+	this->internalDB.append(newProject);
+	emit itemAdded(QVariantList() << this->internalDB.count()-1);
+}
+
+void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepName,
+									QDate stepStart, QDate stepDue, QVariantList members,
+									QString stepDescription){
+	QVariantMap currentProject = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
+	QVariantMap newStep;
+	QVariantList projectSteps = projectSteps = currentProject["steps"].toList();
+	qDebug() << "Before";
+	qDebug() << currentProject["steps"];
+	newStep["no"] = projectSteps.count() + 1;
+	newStep["title"] = stepName;
+	newStep["start"] = stepStart;
+	newStep["due"] = stepDue;
+	//TODO: finalize a way to handle members
+	newStep["members"] = members;
+	newStep["detail"] = stepDescription;
+	projectSteps.append(newStep);
+	currentProject["steps"] = projectSteps;
+	qDebug() << "After";
+	qDebug() << currentProject["steps"];
+	emit itemAdded(QVariantList() << indexPath.value(0).toInt(NULL) << currentProject["steps"].toList().count() - 1);
+
+}
 
 void ProjectModel::removeItems(const QVariantList &indexPaths) {
 	// Loop through removing the highest item in the list first

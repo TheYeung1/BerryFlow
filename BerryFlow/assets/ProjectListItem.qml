@@ -50,14 +50,13 @@ Container {
         rightPadding: 5
         
         horizontalAlignment: HorizontalAlignment.Right
-        verticalAlignment: VerticalAlignment.Center
-
+        verticalAlignment: VerticalAlignment.Top
+        
         Label {
             id: dueDate
             text: "7/9"
             horizontalAlignment: HorizontalAlignment.Right
-            verticalAlignment: VerticalAlignment.Center
-            textStyle.fontSizeValue: 14
+            textStyle.fontSize: FontSize.Small
         }
     }
 }

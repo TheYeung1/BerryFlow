@@ -19,6 +19,25 @@ NavigationPane{
             	verticalAlignment: VerticalAlignment.Top
             	horizontalAlignment: HorizontalAlignment.Center
             }
+            
+            Container {
+                topPadding: 5
+                leftPadding: 10
+                rightPadding: 10
+                horizontalAlignment: HorizontalAlignment.Fill
+                layout: DockLayout {
+                    
+                }
+                
+                Label {
+                    text: "Title"
+                    horizontalAlignment: HorizontalAlignment.Left
+                }
+                Label {
+                    text: "Due"
+                    horizontalAlignment: HorizontalAlignment.Right
+                }
+            }
 	        
              ListView {
                  id: listView
@@ -107,8 +126,11 @@ NavigationPane{
                 }
             }
         },
-        EditProjectSheet {
+        AddProjectForm {
             id: addProjectSheet
+            onAddNewProject: {
+               	listModel.addProject(title, start, end, description);
+            }
         }
     ]
     

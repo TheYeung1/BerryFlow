@@ -1,9 +1,10 @@
 1
-10
+11
+AddProjectForm.qml
+AddStepForm.qml
 data/bucket.json
 data/sample.json
 data/sample.xml
-EditProjectSheet.qml
 main.qml
 ProjectDetailPage.qml
 ProjectListItem.qml
