@@ -113,7 +113,9 @@ Page {
         },
         ActionItem {
             title: "Edit Details"
-            // TODO: Implement Me 
+            onTriggered: {
+                editProjectForm.open();
+            }
         },
         ActionItem {
             title: "View Conversation"
@@ -139,6 +141,18 @@ Page {
             onAddNewStep: {
                 listViewModel.addProjectStep(stepListView.rootIndexPath, stepName, stepStart, 
                     stepDue, stepMembers, stepDescription);
+            }
+        },
+        AddProjectForm {
+            id: editProjectForm
+            mode: "edit"
+            title: detailData.title
+            start: detailData.start
+            end: detailData.end
+            description: detailData.description
+            onEditProject: {
+                listViewModel.editProject(stepListView.rootIndexPath, title, start, end, description);
+                detailData = listViewModel.data(stepListView.rootIndexPath);
             }
         }
     ]

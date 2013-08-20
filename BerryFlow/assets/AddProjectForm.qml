@@ -7,12 +7,22 @@ Sheet{
     // a custom signal for adding a new project
     signal addNewProject(string title, date start, date end, string description)
     
+    // another custom signal for editing a project
+    signal editProject(string title, date start, date end, string description);
+    
     property variant indexPath;
+    property variant mode : "Add"; // by default the mode will be add
+    
+    property alias title: projectTitle.text;
+    property alias start: projectStartDate.value;
+    property alias end: projectEndDate.value;
+    property alias description: projectDescription.text;
+    
     Page{
         
         
     	titleBar: TitleBar {
-        	title: "Add"
+        	title: mode
         	dismissAction: ActionItem {
             	title: "Cancel"
             	onTriggered: {
@@ -24,7 +34,11 @@ Sheet{
             	enabled: Boolean(projectTitle.text)
             	onTriggered: {
                     addProjectSheet.close();
-                    addProjectSheet.addNewProject(projectTitle.text, projectStartDate.value, projectEndDate.value, projectDescription.text);
+                    if (mode == "Add"){
+                    	addProjectSheet.addNewProject(projectTitle.text, projectStartDate.value, projectEndDate.value, projectDescription.text);
+                    } else{
+                        addProjectSheet.editProject(projectTitle.text, projectStartDate.value, projectEndDate.value, projectDescription.text);
+                    }
                 }
             }
         }

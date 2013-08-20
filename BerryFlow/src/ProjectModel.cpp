@@ -107,27 +107,26 @@ void ProjectModel::addProject(QString projectName, QDate projectStart,
 	emit itemAdded(QVariantList() << this->internalDB.count()-1);
 }
 
+/*
+ * updated the project at the given indexPath to the provided details
+ */
+void ProjectModel::editProject(const QVariantList &indexPath, QString projectName, QDate projectStart,
+		QDate projectEnd, QString projectDescription){
+	// get a reference to the project we are going to edit
+	QVariantMap& project = (QVariantMap&) this->internalDB[indexPath.value(0).toInt(NULL)];
+	project["title"] = projectName;
+	project["start"] = projectStart;
+	project["end"] = projectEnd;
+	project["description"] = projectDescription;
+
+	emit itemUpdated(indexPath); // emit signal that the item has been updated
+}
+
 void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepName,
 									QDate stepStart, QDate stepDue, QVariantList members,
 									QString stepDescription){
-//	QVariantMap currentProject = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
-//	QVariantMap newStep;
-//	QVariantList projectSteps = currentProject["steps"].toList();
-//	qDebug() << "Before";
-//	qDebug() << currentProject["steps"];
-//	newStep["no"] = projectSteps.count() + 1;
-//	newStep["title"] = stepName;
-//	newStep["start"] = stepStart;
-//	newStep["due"] = stepDue;
-//	//TODO: finalize a way to handle members
-//	newStep["members"] = members;
-//	newStep["detail"] = stepDescription;
-//	projectSteps.append(newStep);
-//	currentProject["steps"] = projectSteps;
-//	qDebug() << "After";
-//	qDebug() << currentProject["steps"];
-//	emit itemAdded(QVariantList() << indexPath.value(0).toInt(NULL) << currentProject["steps"].toList().count() - 1);
 
+	// use a reference to the project in the database so that the values are directly manipulated
 	QVariantMap& currentProject = (QVariantMap&) this->internalDB[indexPath.value(0).toInt(NULL)];
 	QVariantList& projectSteps = (QVariantList&) currentProject["steps"];
 	QVariantMap newStep;
