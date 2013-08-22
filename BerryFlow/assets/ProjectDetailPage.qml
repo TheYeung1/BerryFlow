@@ -96,6 +96,8 @@ Page {
 	                var p = stepDetailPageDefinition.createObject();
 	                var selectedItemData = dataModel.data(indexPath);
 	                p.stepData = selectedItemData;
+	                p.listModel = listViewModel;
+	                p.stepIndexPath = indexPath;
 	                navPane.push(p);
 	            }
 	        }
@@ -138,6 +140,7 @@ Page {
 	    },
         AddStepForm {
             id: addStepForm
+            mode: "Add";
             onAddNewStep: {
                 listViewModel.addProjectStep(stepListView.rootIndexPath, stepName, stepStart, 
                     stepDue, stepMembers, stepDescription);

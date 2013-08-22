@@ -122,6 +122,8 @@ void ProjectModel::editProject(const QVariantList &indexPath, QString projectNam
 	emit itemUpdated(indexPath); // emit signal that the item has been updated
 }
 
+
+
 void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepName,
 									QDate stepStart, QDate stepDue, QVariantList members,
 									QString stepDescription){
@@ -139,6 +141,19 @@ void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepNam
 	newStep["detail"] = stepDescription;
 	projectSteps.append(newStep);
 	emit itemAdded(QVariantList() << indexPath.value(0).toInt(NULL) << currentProject["steps"].toList().count() - 1);
+}
+
+void ProjectModel::editProjectStep(const QVariantList &indexPath, QString stepName, QDate stepStart,
+			QDate stepEnd, QString stepDescription){
+	QVariantMap& currentProject = (QVariantMap&) this->internalDB[indexPath.value(0).toInt(NULL)];
+	QVariantList& projectSteps = (QVariantList&) currentProject["steps"];
+	QVariantMap& step = (QVariantMap&) projectSteps[indexPath.value(1).toInt(NULL)];
+	step["title"] = stepName;
+	step["start"] = stepStart;
+	step["due"] = stepEnd;
+	step["detail"] = stepDescription;
+	//TODO: handle the editing of assigned members
+	emit itemUpdated(indexPath);
 }
 
 void ProjectModel::removeItems(const QVariantList &indexPaths) {

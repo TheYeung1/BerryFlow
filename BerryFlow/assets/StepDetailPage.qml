@@ -2,6 +2,9 @@ import bb.cascades 1.0
 
 Page {
     property variant stepData:undefined // the details that describe this step
+    property variant listModel:undefined
+    property variant stepIndexPath:undefined
+    
     
     Container {
         
@@ -68,7 +71,23 @@ Page {
         ActionItem {
             title: "Edit"
             ActionBar.placement: ActionBarPlacement.OnBar
-
+            onTriggered: {
+                editStepForm.open()
+            }
+        }
+    ]
+    attachedObjects: [
+        AddStepForm {
+            id: editStepForm
+            title: stepData.title
+            start: stepData.start
+            end: stepData.due
+            description: stepData.detail
+            mode: "edit"
+            onEditStep: {
+                listModel.editProjectStep(stepIndexPath, title, start, end, description);
+                stepData = listModel.data(stepIndexPath);
+            }
         }
     ]
 }

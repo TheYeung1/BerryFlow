@@ -36,6 +36,9 @@ public:
 
 	Q_INVOKABLE virtual void editProject(const QVariantList &indexPath, QString projectName, QDate projectStart,
 			QDate projectEnd, QString projectDescription);
+
+	Q_INVOKABLE virtual void editProjectStep(const QVariantList &indexPath, QString stepName, QDate stepStart,
+			QDate stepEnd, QString stepDescription);
 private:
 	QVariantList internalDB;
 	void initDatabase(const QString& filename);

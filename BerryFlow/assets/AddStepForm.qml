@@ -3,11 +3,19 @@ import bb.cascades 1.0
 Sheet {
     id: addStepSheet
     property variant indexPath;
-    
+    property string mode: "Add"; // by default the mode will be to add
     
     signal addNewStep(string stepName,
         			  date stepStart, date stepDue, variant stepMembers, string stepDescription);	
     
+    signal editStep(string stepName,
+    				date stepStart, date stepDue, string stepDescription);
+
+    property alias title: stepTitle.text
+    property alias start: stepStartDate.value
+    property alias end: stepDueDate.value
+    property alias description: stepDescription.text
+
     Page {
         titleBar: TitleBar {
             title: "Add"
@@ -22,10 +30,15 @@ Sheet {
                 enabled: Boolean(stepTitle.text)
                 onTriggered: {
                     addStepSheet.close();
-                    var A = [];
-                    addStepSheet.addNewStep(stepTitle.text,
-                        stepStartDate.value,stepDueDate.value,
-                        A,stepDescription.text);
+                    if (mode == "Add"){
+	                    var A = [];
+	                    addStepSheet.addNewStep(stepTitle.text,
+	                        stepStartDate.value,stepDueDate.value,
+	                        A,stepDescription.text);
+                    } else {
+                        addStepSheet.editStep(stepTitle.text,
+                            stepStartDate.value, stepDueDate.value, stepDescription.text);
+                    }
                 }
             }
         }

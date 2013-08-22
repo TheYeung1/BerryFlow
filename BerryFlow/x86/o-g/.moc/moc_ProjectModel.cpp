@@ -22,7 +22,7 @@ static const uint qt_meta_data_ProjectModel[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,6 +38,7 @@ static const uint qt_meta_data_ProjectModel[] = {
      235,  180,   13,   13, 0x02,
      336,  275,   13,   13, 0x02,
      471,  406,   13,   13, 0x02,
+     578,  525,   13,   13, 0x02,
 
        0        // eod
 };
@@ -55,6 +56,8 @@ static const char qt_meta_stringdata_ProjectModel[] = {
     "addProjectStep(QVariantList,QString,QDate,QDate,QVariantList,QString)\0"
     "indexPath,projectName,projectStart,projectEnd,projectDescription\0"
     "editProject(QVariantList,QString,QDate,QDate,QString)\0"
+    "indexPath,stepName,stepStart,stepEnd,stepDescription\0"
+    "editProjectStep(QVariantList,QString,QDate,QDate,QString)\0"
 };
 
 void ProjectModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -75,6 +78,7 @@ void ProjectModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 5: _t->addProject((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDate(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
         case 6: _t->addProjectStep((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QVariantList(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
         case 7: _t->editProject((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5]))); break;
+        case 8: _t->editProjectStep((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5]))); break;
         default: ;
         }
     }
@@ -114,9 +118,9 @@ int ProjectModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
