@@ -1,5 +1,5 @@
 1
-11
+12
 AddProjectForm.qml
 AddStepForm.qml
 data/bucket.json
@@ -10,4 +10,5 @@ ProjectDetailPage.qml
 ProjectListItem.qml
 ProjectListView.qml
 ProjectStepItem.qml
+registration.qml
 StepDetailPage.qml

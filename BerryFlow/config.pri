@@ -3,32 +3,44 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 
 device {
     CONFIG(debug, debug|release) {
+        LIBS += -lbbplatformbbm
+
         SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
                  $$quote($$BASEDIR/src/ProjectModel.cpp) \
+                 $$quote($$BASEDIR/src/RegistrationHandler.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
-                 $$quote($$BASEDIR/src/ProjectModel.h)
+                 $$quote($$BASEDIR/src/ProjectModel.h) \
+                 $$quote($$BASEDIR/src/RegistrationHandler.hpp)
     }
 
     CONFIG(release, debug|release) {
+        LIBS += -lbbplatformbbm
+
         SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
                  $$quote($$BASEDIR/src/ProjectModel.cpp) \
+                 $$quote($$BASEDIR/src/RegistrationHandler.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
-                 $$quote($$BASEDIR/src/ProjectModel.h)
+                 $$quote($$BASEDIR/src/ProjectModel.h) \
+                 $$quote($$BASEDIR/src/RegistrationHandler.hpp)
     }
 }
 
 simulator {
     CONFIG(debug, debug|release) {
+        LIBS += -lbbplatformbbm
+
         SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
                  $$quote($$BASEDIR/src/ProjectModel.cpp) \
+                 $$quote($$BASEDIR/src/RegistrationHandler.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
-                 $$quote($$BASEDIR/src/ProjectModel.h)
+                 $$quote($$BASEDIR/src/ProjectModel.h) \
+                 $$quote($$BASEDIR/src/RegistrationHandler.hpp)
     }
 }
 
