@@ -5,7 +5,9 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
+#include "InviteToDownload.hpp"
 #include "ProjectModel.h"
+#include "RegistrationHandler.hpp"
 
 using namespace bb::cascades;
 
@@ -23,7 +25,13 @@ BerryFlowApp::BerryFlowApp(bb::cascades::Application *app) :
     // initial load
     onSystemLanguageChanged();
 
+    const QString uuid(QLatin1String("0165e3bf-42ca-45a1-99b2-0576608acaff"));
+    RegistrationHandler *registrationHandler = new RegistrationHandler(uuid, app);
 
+    // register the application at launch
+    registrationHandler->registerApplication();
+
+    InviteToDownload *inviteToDownload = new InviteToDownload(registrationHandler->context(), app);
 
     // Registering the model so that it can be accessed in QML
     qmlRegisterType<ProjectModel>("com.BerryFlow.ProjectData", 1, 0, "ProjectModel");
@@ -31,6 +39,11 @@ BerryFlowApp::BerryFlowApp(bb::cascades::Application *app) :
     // Create scene document from main.qml asset, the parent is set
     // to ensure the document gets destroyed properly at shut down.
     QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+
+    qml->setContextProperty("_registrationHandler", registrationHandler);
+
+    // allow the invitation to download object to be accessible in QML
+    qml->setContextProperty("_inviteToDownload", inviteToDownload);
 
     // Create root object for the UI
     AbstractPane *root = qml->createRootObject<AbstractPane>();

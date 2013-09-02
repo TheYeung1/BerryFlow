@@ -118,7 +118,7 @@ void RegistrationHandler::processRegistrationStatus(const RegistrationState::Typ
 
     default:
         qDebug() << "Ignoring BBM Social Platform access state=" << state
-            << "when progress=" << m_progress;
+        << "when progress=" << m_progress;
         break;
     }
 }
@@ -220,4 +220,8 @@ void RegistrationHandler::dialogFinished(bb::system::SystemUiResult::Type value)
 
 void RegistrationHandler::finishRegistration() {
     emit registered();
+}
+
+bool RegistrationHandler::isRegistered(){
+	return m_isAllowed;
 }

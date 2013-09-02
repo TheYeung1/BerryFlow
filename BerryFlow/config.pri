@@ -6,11 +6,13 @@ device {
         LIBS += -lbbplatformbbm
 
         SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
+                 $$quote($$BASEDIR/src/InviteToDownload.cpp) \
                  $$quote($$BASEDIR/src/ProjectModel.cpp) \
                  $$quote($$BASEDIR/src/RegistrationHandler.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
+                 $$quote($$BASEDIR/src/InviteToDownload.hpp) \
                  $$quote($$BASEDIR/src/ProjectModel.h) \
                  $$quote($$BASEDIR/src/RegistrationHandler.hpp)
     }
@@ -19,11 +21,13 @@ device {
         LIBS += -lbbplatformbbm
 
         SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
+                 $$quote($$BASEDIR/src/InviteToDownload.cpp) \
                  $$quote($$BASEDIR/src/ProjectModel.cpp) \
                  $$quote($$BASEDIR/src/RegistrationHandler.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
+                 $$quote($$BASEDIR/src/InviteToDownload.hpp) \
                  $$quote($$BASEDIR/src/ProjectModel.h) \
                  $$quote($$BASEDIR/src/RegistrationHandler.hpp)
     }
@@ -34,11 +38,13 @@ simulator {
         LIBS += -lbbplatformbbm
 
         SOURCES +=  $$quote($$BASEDIR/src/BerryFlowApp.cpp) \
+                 $$quote($$BASEDIR/src/InviteToDownload.cpp) \
                  $$quote($$BASEDIR/src/ProjectModel.cpp) \
                  $$quote($$BASEDIR/src/RegistrationHandler.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/BerryFlowApp.hpp) \
+                 $$quote($$BASEDIR/src/InviteToDownload.hpp) \
                  $$quote($$BASEDIR/src/ProjectModel.h) \
                  $$quote($$BASEDIR/src/RegistrationHandler.hpp)
     }

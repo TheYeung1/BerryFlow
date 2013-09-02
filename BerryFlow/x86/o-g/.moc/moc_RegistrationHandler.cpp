@@ -22,8 +22,8 @@ static const uint qt_meta_data_RegistrationHandler[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
-       3,   44, // properties
+       7,   14, // methods
+       3,   49, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
@@ -36,13 +36,14 @@ static const uint qt_meta_data_RegistrationHandler[] = {
  // slots: signature, parameters, type, tag, flags
       49,   20,   20,   20, 0x0a,
       71,   20,   20,   20, 0x0a,
-      98,   92,   20,   20, 0x08,
-     174,  168,   20,   20, 0x08,
+      97,   20,   92,   20, 0x0a,
+     118,  112,   20,   20, 0x08,
+     194,  188,   20,   20, 0x08,
 
  // properties: name, type, flags
-     228,  223, 0x01495001,
-     244,  236, 0x0a495001,
-     258,  223, 0x01495001,
+     243,   92, 0x01495001,
+     259,  251, 0x0a495001,
+     273,   92, 0x01495001,
 
  // properties: notify_signal_id
        0,
@@ -55,10 +56,11 @@ static const uint qt_meta_data_RegistrationHandler[] = {
 static const char qt_meta_stringdata_RegistrationHandler[] = {
     "RegistrationHandler\0\0stateChanged()\0"
     "registered()\0registerApplication()\0"
-    "finishRegistration()\0state\0"
+    "finishRegistration()\0bool\0isRegistered()\0"
+    "state\0"
     "processRegistrationStatus(bb::platform::bbm::RegistrationState::Type)\0"
     "value\0dialogFinished(bb::system::SystemUiResult::Type)\0"
-    "bool\0allowed\0QString\0statusMessage\0"
+    "allowed\0QString\0statusMessage\0"
     "temporaryError\0"
 };
 
@@ -72,8 +74,10 @@ void RegistrationHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 1: _t->registered(); break;
         case 2: _t->registerApplication(); break;
         case 3: _t->finishRegistration(); break;
-        case 4: _t->processRegistrationStatus((*reinterpret_cast< const bb::platform::bbm::RegistrationState::Type(*)>(_a[1]))); break;
-        case 5: _t->dialogFinished((*reinterpret_cast< bb::system::SystemUiResult::Type(*)>(_a[1]))); break;
+        case 4: { bool _r = _t->isRegistered();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 5: _t->processRegistrationStatus((*reinterpret_cast< const bb::platform::bbm::RegistrationState::Type(*)>(_a[1]))); break;
+        case 6: _t->dialogFinished((*reinterpret_cast< bb::system::SystemUiResult::Type(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -111,9 +115,9 @@ int RegistrationHandler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     }
 #ifndef QT_NO_PROPERTIES
       else if (_c == QMetaObject::ReadProperty) {

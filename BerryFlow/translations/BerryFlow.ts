@@ -62,17 +62,17 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="7"/>
+        <location filename="../assets/main.qml" line="22"/>
         <source>Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="13"/>
+        <location filename="../assets/main.qml" line="28"/>
         <source>Tab 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="17"/>
+        <location filename="../assets/main.qml" line="32"/>
         <source>Second tab</source>
         <translation type="unfinished"></translation>
     </message>

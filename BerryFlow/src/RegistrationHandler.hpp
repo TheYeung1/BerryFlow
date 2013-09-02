@@ -81,6 +81,8 @@ public:
     BbmRegistrationProgress::Type progress() const
     { return m_progress; }
 
+
+
 public Q_SLOTS:
     /**
      * This method is called to trigger the registration with the BBM Social
@@ -95,6 +97,8 @@ public Q_SLOTS:
      */
     void finishRegistration();
 
+
+    bool isRegistered();
 Q_SIGNALS:
     // The change notification signal of the properties.
     void stateChanged();

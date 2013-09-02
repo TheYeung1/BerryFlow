@@ -3,6 +3,7 @@ import com.BerryFlow.ProjectData 1.0
 
 NavigationPane{
     id: navPane
+    
 	Page {
 	    Container {
 	        layout: StackLayout {
@@ -97,6 +98,8 @@ NavigationPane{
                      navPane.push(p);
                  }
              }
+             
+             
         }
 	    actions: [
 	        ActionItem {
@@ -108,7 +111,16 @@ NavigationPane{
 	        ActionItem {
             	title: "View Archive"
             	// TODO: Implement Me 
-            }
+            },
+	        ActionItem{
+	            title:"Invite to Download"
+	            onTriggered: {
+                	_inviteToDownload.sendInvite();
+                }
+	            enabled: {
+                    _registrationHandler.allowed;
+	            }
+	        }
 	    ]
 	}
 	
@@ -137,4 +149,6 @@ NavigationPane{
     onPopTransitionEnded: {
         page.destroy() // destroy the page object that was just popped off
     }
+    
+    
 }

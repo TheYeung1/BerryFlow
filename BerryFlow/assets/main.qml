@@ -1,6 +1,21 @@
 import bb.cascades 1.2
 
 TabbedPane {
+    Menu.definition: MenuDefinition {
+        actions: [
+            ActionItem {
+                title: "Connect to BBM"
+                onTriggered: {
+                    !_registrationHandler.isRegistered();
+                    _registrationHandler.registerApplication(); 
+                } 
+                enabled:{
+                    !(_registrationHandler.allowed);
+                }
+            }
+        ]
+    }
+    
     showTabsOnActionBar: true
     Tab { //First tab
         // Localized text with the dynamic translation and locale updates support
