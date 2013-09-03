@@ -100,6 +100,10 @@ Page {
 	                p.stepIndexPath = indexPath;
 	                navPane.push(p);
 	            }
+	            
+                function pushForm(p){
+                    navPane.push(p);
+                }
 	        }
 	    	
 	    }    

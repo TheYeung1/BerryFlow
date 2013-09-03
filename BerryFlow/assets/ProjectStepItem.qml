@@ -3,10 +3,12 @@ import bb.cascades 1.0
 
 // An item representing a step. Displayed in the ProjectDetailPage list of steps
 Container {
+    id: stepItem
     property alias step: stepNumber.text
     property alias stepTitle: stepTitle.text
     property alias stepDetail: stepDetail.text
-    
+    property date startdate
+    property date duedate
     
     
     preferredHeight: 120
@@ -49,5 +51,57 @@ Container {
             textStyle.fontSize: FontSize.Small
             textStyle.color: Color.Gray
         }
+    }
+    
+    contextActions: [
+        ActionSet {
+            ActionItem {
+                title: "Edit"
+                onTriggered: {
+                    var p = editStepForm.createObject();
+                    p.open();
+                }
+            }
+            
+            DeleteActionItem {
+                title: qsTr("Delete")
+                onTriggered: {
+                    stepItem.ListItem.view.dataModel.removeItems([stepItem.ListItem.indexPath]);
+                }
+            }
+        }
+    ]
+    
+    attachedObjects: [
+        ComponentDefinition {
+            id: editStepForm
+            AddStepForm {
+                title: stepTitle.text
+                start: startdate
+                end: duedate
+                description: stepDetail.text
+                onEditStep: {
+                    stepItem.ListItem.view.dataModel.editProjectStep(stepItem.ListItem.indexPath, title, start, end, description)
+                }
+            }
+        }
+    ]
+    
+    function setHighlight (highlighted){
+        if (highlighted){
+            project.opacity = 0.9;
+            project.background = Color.create("#0094D9");
+        } else {
+            project.opacity = 1.0;
+            project.background = null ;
+        }
+    }
+    
+    ListItem.onActivationChanged: {
+        setHighlight(ListItem.active);
+    }
+    
+    ListItem.onSelectionChanged: {
+        setHighlight(ListItem.selected);
     }
 }

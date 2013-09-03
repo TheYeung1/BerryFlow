@@ -15,6 +15,14 @@
     </message>
 </context>
 <context>
+    <name>ProjectStepItem</name>
+    <message>
+        <location filename="../assets/ProjectStepItem.qml" line="67"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RegistrationHandler</name>
     <message>
         <location filename="../src/RegistrationHandler.cpp" line="40"/>
