@@ -172,6 +172,10 @@ NavigationPane{
             id: addProjectSheet
             onAddNewProject: {
                	listModel.addProject(title, start, end, description);
+               	addProjectSheet.title = "";
+               	addProjectSheet.start = new Date();
+               	addProjectSheet.end = new Date();
+               	addProjectSheet.description = "";
             }
         },
         ComponentDefinition {

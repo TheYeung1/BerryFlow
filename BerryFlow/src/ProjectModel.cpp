@@ -71,13 +71,16 @@ QVariant ProjectModel::data(const QVariantList &indexPath) {
 
 	if(indexPath.length() == 1) {
 		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
-
+		map["start"] = map["start"].toDate();
+		map["end"] = map["end"].toDate();
 		return QVariant(map);
 	}
 	else if(indexPath.length() == 2) {
 		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
-		QVariantMap stepsMap = map["steps"].toMap();
-		return map["steps"].toList().value(indexPath.value(1).toInt(NULL));
+		QVariantMap stepsMap = map["steps"].toList().value(indexPath.value(1).toInt(NULL)).toMap();
+		stepsMap["start"] = stepsMap["start"].toDate();
+		stepsMap["due"] = stepsMap["due"].toDate();
+		return QVariant(stepsMap);
 	}
 	return QVariant();
 }

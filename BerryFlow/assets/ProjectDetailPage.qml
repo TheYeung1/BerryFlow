@@ -144,6 +144,10 @@ Page {
             onAddNewStep: {
                 listViewModel.addProjectStep(stepListView.rootIndexPath, stepName, stepStart, 
                     stepDue, stepMembers, stepDescription);
+                addStepForm.title = "";
+                addStepForm.start = new Date();
+                addStepForm.end = new Date();
+                addStepForm.description = "";
             }
         },
         AddProjectForm {
