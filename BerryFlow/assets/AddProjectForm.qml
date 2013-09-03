@@ -59,6 +59,7 @@ Sheet{
         	    id: projectStartDate
             	title: "Start"
             	value: { new Date(); } 
+                mode: DateTimePickerMode.Date
             }
         	
         	DateTimePicker {
@@ -66,6 +67,7 @@ Sheet{
             	title: "End"
             	value: { new Date(); } 
             	minimum: projectStartDate.value
+                mode: DateTimePickerMode.Date
             }
         	
         	TextArea {

@@ -60,24 +60,6 @@
     </message>
 </context>
 <context>
-    <name>main</name>
-    <message>
-        <location filename="../assets/main.qml" line="22"/>
-        <source>Active</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="28"/>
-        <source>Tab 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/main.qml" line="32"/>
-        <source>Second tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>registration</name>
     <message>
         <location filename="../assets/registration.qml" line="51"/>

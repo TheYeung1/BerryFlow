@@ -7,11 +7,14 @@ Container {
     property alias stepTitle: stepTitle.text
     property alias stepDetail: stepDetail.text
     
+    
+    
     preferredHeight: 120
     Divider {
         topMargin: 0
         bottomMargin: 0
     }
+    
     layout: DockLayout {
     
     }
@@ -26,11 +29,12 @@ Container {
     
     Container {
         preferredHeight: 120
+        leftPadding: 50
         layout: StackLayout {
             orientation: LayoutOrientation.TopToBottom
         }
         
-        horizontalAlignment: HorizontalAlignment.Center
+        
         verticalAlignment: VerticalAlignment.Top
         
         Label{

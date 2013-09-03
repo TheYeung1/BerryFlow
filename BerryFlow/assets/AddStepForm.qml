@@ -58,6 +58,7 @@ Sheet {
             DateTimePicker {
                 id: stepStartDate
                 title: "Start"
+                mode: DateTimePickerMode.Date
                 value: { new Date(); }
             }
             
@@ -65,6 +66,7 @@ Sheet {
                 id: stepDueDate
                 title: "Due"
                 value: {new Date(); }
+                mode: DateTimePickerMode.Date
                 minimum: stepStartDate.value
             }
             

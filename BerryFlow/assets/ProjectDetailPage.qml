@@ -51,7 +51,7 @@ Page {
     	Container {
         	leftPadding: 14
             Label {
-                text: detailData.start
+                text: Qt.formatDate(detailData.start, "yyyy-MM-dd");
             }
         }
     	
@@ -61,7 +61,7 @@ Page {
         Container {
             leftPadding: 14
             Label {
-                text: detailData.end
+                text: Qt.formatDate(detailData.end, "yyyy-MM-dd");
             }
         }
         	

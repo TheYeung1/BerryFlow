@@ -56,6 +56,10 @@ bool ProjectModel::hasChildren(const QVariantList &indexPath) {
 }
 QString ProjectModel::itemType(const QVariantList &indexPath) {
 	if (indexPath.length() == 1){
+		QVariantMap project = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
+		if (project["status"] == "archive"){
+			return QString("archive");
+		}
 		return QString("project");
 	} else if (indexPath.length() == 2){
 		return QString("step");
@@ -135,6 +139,7 @@ void ProjectModel::addProjectStep(const QVariantList &indexPath, QString stepNam
 	newStep["no"] = projectSteps.count() + 1;
 	newStep["title"] = stepName;
 	newStep["start"] = stepStart;
+
 	newStep["due"] = stepDue;
 	//TODO: finalize a way to handle members
 	newStep["members"] = members;
@@ -161,11 +166,23 @@ void ProjectModel::removeItems(const QVariantList &indexPaths) {
 	for(int i = indexPaths.count() - 1; i >= 0; i--) {
 		QVariant indexPath = indexPaths.value(i);
 		QVariantList indexPathList = indexPath.toList();
-		if(indexPathList.count() != 1) continue; // not a proper index path for this data type
+		//if(indexPathList.count() != 1) continue; // not a proper index path for this data type
 		int index = indexPathList.value(0).toInt(NULL);
 		this->internalDB.removeAt(index);
 		emit itemRemoved(indexPathList);
 	}
 }
 
+void ProjectModel::archiveItems(const QVariantList &indexPaths) {
+	// Loop through removing the highest item in the list first
+	for(int i = indexPaths.count() - 1; i >= 0; i--) {
+		QVariant indexPath = indexPaths.value(i);
+		QVariantList indexPathList = indexPath.toList();
+		if(indexPathList.count() != 1) continue; // not a proper index path for this data type
+		int index = indexPathList.value(0).toInt(NULL);
+		QVariantMap& project = (QVariantMap&) this->internalDB[index];
+		project["status"] = "archive";
+		emit itemUpdated(indexPathList);
+	}
+}
 

@@ -5,7 +5,7 @@ import bb.cascades 1.0
 Container {
     property alias name: projectName.text
     property alias description: projectDescription.text
-    property alias duedate: dueDate.text
+    property variant duedate
     
     preferredHeight: 120
 
@@ -54,7 +54,7 @@ Container {
         
         Label {
             id: dueDate
-            text: "7/9"
+            text: Qt.formatDate(duedate, "yyyy-MM-dd");
             horizontalAlignment: HorizontalAlignment.Right
             textStyle.fontSize: FontSize.Small
         }

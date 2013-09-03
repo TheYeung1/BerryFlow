@@ -25,7 +25,7 @@ Page {
         	leftPadding: 14    
 	        Label{
 	            id: stepStart
-	            text: stepData.start
+                text: Qt.formatDate(stepData.start, "yyyy-MM-dd");
 	            horizontalAlignment: HorizontalAlignment.Left
 	            textStyle.fontSize: FontSize.Medium
 	            textStyle.base: SystemDefaults.TextStyles.BodyText
@@ -38,7 +38,7 @@ Page {
             leftPadding: 14
 	        Label{
 	            id: stepDue
-	            text: stepData.due
+	            text: Qt.formatDate(stepData.due, "yyyy-MM-dd");
 	            horizontalAlignment: HorizontalAlignment.Left
 	            textStyle.fontSize: FontSize.Medium
 	            textStyle.base: SystemDefaults.TextStyles.BodyText

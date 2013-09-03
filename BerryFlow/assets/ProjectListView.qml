@@ -4,6 +4,21 @@ import com.BerryFlow.ProjectData 1.0
 NavigationPane{
     id: navPane
     
+    Menu.definition: MenuDefinition {
+        actions: [
+            ActionItem {
+                title: "Connect to BBM"
+                onTriggered: {
+                    !_registrationHandler.isRegistered();
+                    _registrationHandler.registerApplication(); 
+                } 
+                enabled:{
+                    !(_registrationHandler.allowed);
+                }
+            }
+        ]
+    }
+    
 	Page {
 	    Container {
 	        layout: StackLayout {
@@ -72,12 +87,22 @@ NavigationPane{
                      }
                  ]
                  
+                 multiSelectAction: MultiSelectActionItem {
+                     multiSelectHandler: listView.multiSelectHandler
+                 }
+                 
                  multiSelectHandler {
                      status: "None Selected"
                      actions: [
                          DeleteActionItem {
                              onTriggered: {
                                  listView.dataModel.removeItems(listView.selectionList());
+                             }
+                         },
+                         ActionItem {
+                             title: "Archive Items"
+                             onTriggered: {
+                                 listView.dataModel.archiveItems(listView.selectionList());
                              }
                          }
                      ]
@@ -107,10 +132,15 @@ NavigationPane{
                 onTriggered: {
                     addProjectSheet.open();
                 }
+                ActionBar.placement: ActionBarPlacement.OnBar
             },
 	        ActionItem {
             	title: "View Archive"
-            	// TODO: Implement Me 
+            	onTriggered: {
+                    var p = projectArchiveList.createObject();
+                    p.listModel = listModel
+                    navPane.push(p);
+                }
             },
 	        ActionItem{
 	            title:"Invite to Download"
@@ -142,6 +172,18 @@ NavigationPane{
             id: addProjectSheet
             onAddNewProject: {
                	listModel.addProject(title, start, end, description);
+            }
+        },
+        ComponentDefinition {
+            id: projectArchiveList
+            ArchiveListView {
+                paneProperties: NavigationPaneProperties {
+                    backButton: ActionItem {
+                        onTriggered: {
+                            navPane.pop();
+                        }
+                    }
+                }
             }
         }
     ]
