@@ -24,12 +24,14 @@ Sheet{
     	titleBar: TitleBar {
         	title: mode
         	dismissAction: ActionItem {
+        	    imageSource: "asset:///icons/ic_cancel.png"
             	title: "Cancel"
             	onTriggered: {
                     addProjectSheet.close(); 
                 }
             }
         	acceptAction: ActionItem {
+        	    imageSource: "asset:///icons/ic_save.png"
             	title: "Save" 
             	enabled: Boolean(projectTitle.text)
             	onTriggered: {

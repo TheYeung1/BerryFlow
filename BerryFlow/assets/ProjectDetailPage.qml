@@ -106,6 +106,7 @@ Page {
     }
     actions: [
         ActionItem {
+            imageSource: "asset:///icons/ic_add.png"
             title: "Add Step"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
@@ -114,12 +115,14 @@ Page {
             
         },
         ActionItem {
+            imageSource: "asset:///icons/ic_edit.png"
             title: "Edit Details"
             onTriggered: {
                 editProjectForm.open();
             }
         },
         ActionItem {
+            imageSource: "asset:///icons/ic_view_post.png"
             title: "View Conversation"
             // TODO: Implement Me
         }

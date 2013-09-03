@@ -20,12 +20,14 @@ Sheet {
         titleBar: TitleBar {
             title: "Add"
             dismissAction: ActionItem {
+                imageSource: "asset:///icons/ic_add.png"
                 title: "Cancel"
                 onTriggered: {
                     addStepSheet.close(); 
                 }
             }
             acceptAction: ActionItem {
+                imageSource: "asset:///icons/ic_save.png"
                 title: "Save" 
                 enabled: Boolean(stepTitle.text)
                 onTriggered: {

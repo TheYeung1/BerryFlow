@@ -7,6 +7,7 @@ NavigationPane{
     Menu.definition: MenuDefinition {
         actions: [
             ActionItem {
+                imageSource: "asset:///icons/ic_bbm.png"
                 title: "Connect to BBM"
                 onTriggered: {
                     !_registrationHandler.isRegistered();
@@ -128,6 +129,7 @@ NavigationPane{
         }
 	    actions: [
 	        ActionItem {
+	            imageSource: "asset:///icons/ic_add_folder.png"
             	title: "Add Project"
                 onTriggered: {
                     addProjectSheet.open();
@@ -135,6 +137,7 @@ NavigationPane{
                 ActionBar.placement: ActionBarPlacement.OnBar
             },
 	        ActionItem {
+	            imageSource: "asset:///icons/ic_view_list.png"
             	title: "View Archive"
             	onTriggered: {
                     var p = projectArchiveList.createObject();
@@ -143,6 +146,7 @@ NavigationPane{
                 }
             },
 	        ActionItem{
+	            imageSource: "asset:///icons/ic_open_link.png"
 	            title:"Invite to Download"
 	            onTriggered: {
                 	_inviteToDownload.sendInvite();

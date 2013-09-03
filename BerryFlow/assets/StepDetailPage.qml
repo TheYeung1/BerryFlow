@@ -69,6 +69,7 @@ Page {
     }
     actions: [
         ActionItem {
+            imageSource: "asset:///icons/ic_edit.png"
             title: "Edit"
             ActionBar.placement: ActionBarPlacement.OnBar
             onTriggered: {
