@@ -4,17 +4,12 @@
 <context>
     <name>ProjectListItem</name>
     <message>
-        <location filename="../assets/ProjectListItem.qml" line="67"/>
+        <location filename="../assets/ProjectListItem.qml" line="70"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/ProjectListItem.qml" line="75"/>
-        <source>Archive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/ProjectListItem.qml" line="83"/>
+        <location filename="../assets/ProjectListItem.qml" line="94"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>

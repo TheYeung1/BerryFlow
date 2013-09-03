@@ -55,6 +55,7 @@ Page {
                         name: ListItemData.title
                         description: ListItemData.description
                         duedate: ListItemData.end
+                        status: ListItemData.status
                     }
                 },
                 ListItemComponent { // to hide the step items
@@ -79,7 +80,10 @@ Page {
                     },
                     ActionItem{
                         title: "Unarchive"
-                        //TODO: implement me
+                        imageSource: "asset:///icons/ic_entry.png"
+                        onTriggered: {
+                            listView.dataModel.unArchiveItems(listView.selectionList());
+                        }
                     }
                 ]
             }

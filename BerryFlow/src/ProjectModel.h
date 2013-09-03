@@ -28,6 +28,8 @@ public:
 	Q_INVOKABLE virtual void removeItems(const QVariantList &indexPaths);
 
 	Q_INVOKABLE virtual void archiveItems(const QVariantList &indexPaths);
+	Q_INVOKABLE virtual void unArchiveItems(const QVariantList &indexPaths);
+
 
 	Q_INVOKABLE virtual void addProject(QString projectName, QDate projectStart,
 			QDate projectEnd, QString projectDescription);

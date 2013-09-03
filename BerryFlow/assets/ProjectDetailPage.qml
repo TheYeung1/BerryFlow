@@ -120,11 +120,6 @@ Page {
             onTriggered: {
                 editProjectForm.open();
             }
-        },
-        ActionItem {
-            imageSource: "asset:///icons/ic_view_post.png"
-            title: "View Conversation"
-            // TODO: Implement Me
         }
     ]
     

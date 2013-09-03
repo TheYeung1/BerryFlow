@@ -79,6 +79,8 @@ NavigationPane{
                              name: ListItemData.title
                              description: ListItemData.description
                              duedate: ListItemData.end
+                             startdate: ListItemData.start
+                             status: ListItemData.status
                          }
                      },
                      ListItemComponent { // to hide the step items
@@ -107,6 +109,7 @@ NavigationPane{
                          },
                          ActionItem {
                              title: "Archive Items"
+                             imageSource: "asset:///icons/ic_entry.png"
                              onTriggered: {
                                  listView.dataModel.archiveItems(listView.selectionList());
                              }
@@ -128,6 +131,10 @@ NavigationPane{
                      console.log(dataModel.childCount(indexPath));
                      navPane.push(p);
                  }
+                
+                function pushForm(p){
+                    navPane.push(p);
+                }
              }
              
              

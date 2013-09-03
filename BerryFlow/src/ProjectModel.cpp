@@ -78,6 +78,7 @@ QVariant ProjectModel::data(const QVariantList &indexPath) {
 	else if(indexPath.length() == 2) {
 		QVariantMap map = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
 		QVariantMap stepsMap = map["steps"].toList().value(indexPath.value(1).toInt(NULL)).toMap();
+		stepsMap["no"] = indexPath.value(1).toInt(NULL) + 1;
 		stepsMap["start"] = stepsMap["start"].toDate();
 		stepsMap["due"] = stepsMap["due"].toDate();
 		return QVariant(stepsMap);
@@ -185,6 +186,19 @@ void ProjectModel::archiveItems(const QVariantList &indexPaths) {
 		int index = indexPathList.value(0).toInt(NULL);
 		QVariantMap& project = (QVariantMap&) this->internalDB[index];
 		project["status"] = "archive";
+		emit itemUpdated(indexPathList);
+	}
+}
+
+void ProjectModel::unArchiveItems(const QVariantList &indexPaths) {
+	// Loop through removing the highest item in the list first
+	for(int i = indexPaths.count() - 1; i >= 0; i--) {
+		QVariant indexPath = indexPaths.value(i);
+		QVariantList indexPathList = indexPath.toList();
+		if(indexPathList.count() != 1) continue; // not a proper index path for this data type
+		int index = indexPathList.value(0).toInt(NULL);
+		QVariantMap& project = (QVariantMap&) this->internalDB[index];
+		project["status"] = "active";
 		emit itemUpdated(indexPathList);
 	}
 }
