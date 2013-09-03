@@ -85,6 +85,11 @@ NavigationPane{
                          type: "step"
                          Container {
                          }
+                     },
+                     ListItemComponent{
+                         type: "archive"
+                         Container {
+                         }
                      }
                  ]
                  

@@ -3,6 +3,7 @@ import bb.cascades 1.0
 
 // an item representing a project. Displayed in the ProjectListView
 Container {
+    id: project
     property alias name: projectName.text
     property alias description: projectDescription.text
     property variant duedate
@@ -58,6 +59,59 @@ Container {
             horizontalAlignment: HorizontalAlignment.Right
             textStyle.fontSize: FontSize.Small
         }
+    }
+    
+    contextActions: [
+        ActionSet {
+            ActionItem {
+                title: qsTr("Edit")
+                
+                onTriggered: {
+                    //implement me
+                }
+            }
+            
+            ActionItem {
+                title: qsTr("Archive")
+                
+                onTriggered: {
+                    project.ListItem.view.dataModel.archiveItems([project.ListItem.indexPath]);
+                }
+            }
+            
+	        DeleteActionItem{
+	            title: qsTr("Delete") + Retranslate.onLanguageChanged
+	            
+	            onTriggered: {
+                    project.ListItem.view.dataModel.removeItems([project.ListItem.indexPath]); 
+                }
+	        }
+	        
+	        MultiSelectActionItem {
+	            multiSelectHandler: project.ListItem.view.multiSelectHandler
+	            onTriggered: {
+	                multiSelectHandler.active
+	            }
+	        }
+         }
+    ]
+    
+    function setHighlight (highlighted){
+        if (highlighted){
+            project.opacity = 0.9;
+            project.background = Color.create("#0094D9")
+        } else {
+            project.opacity = 1.0;
+            project.background = null ;
+        }
+    }
+    
+    ListItem.onActivationChanged: {
+        setHighlight(ListItem.active);
+    }
+    
+    ListItem.onSelectionChanged: {
+        setHighlight(ListItem.selected);
     }
 }
 
