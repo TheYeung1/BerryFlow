@@ -57,6 +57,7 @@ Page {
     	
         Header {
             title: "Due" 
+            
         }
         Container {
             leftPadding: 14

@@ -61,11 +61,6 @@ Page {
 	        }
         }
         
-        Header {
-            title: "Assigned Members"
-        }
-        //TODO: have a list view display the members, figure out how to do this.
-        
     }
     actions: [
         ActionItem {

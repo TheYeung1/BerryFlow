@@ -3,6 +3,7 @@ import com.BerryFlow.ProjectData 1.0
 
 Page {
     property alias listModel: listView.dataModel
+    property alias archiveFilter: filterText.text
     
     Container {
         layout: StackLayout {
@@ -11,6 +12,7 @@ Page {
         }
         
         TextField {
+            id: filterText
             hintText: "Filter Projects..."
             leftPadding: 10
             rightPadding: 10
@@ -18,6 +20,10 @@ Page {
             topPadding: 3
             verticalAlignment: VerticalAlignment.Top
             horizontalAlignment: HorizontalAlignment.Center
+            onTextChanging: {
+                listModel.setFilter(text);
+            }
+            textStyle.fontSize: FontSize.Large
         }
         
         Container {
@@ -67,6 +73,10 @@ Page {
 	                type: "project"
 	                Container {
 	                }
+                },
+                ListItemComponent {
+                    type: "filtered"
+                    Container {}
                 }
             ]
             

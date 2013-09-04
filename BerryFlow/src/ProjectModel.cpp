@@ -14,11 +14,11 @@ using namespace bb::data;
 
 
 ProjectModel::ProjectModel(QObject *parent) : DataModel(parent) {
-	this->initDatabase("./data/sample.json");
+	this->initDatabase("./data/db.json");
 }
 ProjectModel::~ProjectModel() {
 	bb::data::JsonDataAccess jda;
-	jda.save(this->internalDB, "./data/sample.json");
+	jda.save(this->internalDB, "./data/db.json");
 }
 void ProjectModel::initDatabase(const QString& filename) {
     bb::data::JsonDataAccess jda;
@@ -34,7 +34,7 @@ void ProjectModel::initDatabase(const QString& filename) {
     }
 
     if (loaded == false){
-    	this->internalDB = jda.load("app/native/assets/data/sample.json").value<QVariantList>();
+    	this->internalDB = jda.load("app/native/assets/data/db.json").value<QVariantList>();
     }
 }
 
@@ -58,6 +58,10 @@ QString ProjectModel::itemType(const QVariantList &indexPath) {
 	if (indexPath.length() == 1){
 		QVariantMap project = this->internalDB.value(indexPath.value(0).toInt(NULL)).toMap();
 		if (project["status"] == "archive"){
+			if (!isFiltered(indexPath)){
+				qDebug("filtered");
+				return QString("filtered");
+			}
 			return QString("archive");
 		}
 		/* if the item does not begin with the filter, then it will return false.

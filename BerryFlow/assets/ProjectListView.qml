@@ -28,6 +28,7 @@ NavigationPane{
             }
        
             TextField {
+                id: projectFilter
             	hintText: "Filter Projects..."
             	leftPadding: 10
             	rightPadding: 10
@@ -35,8 +36,9 @@ NavigationPane{
             	topPadding: 3
             	verticalAlignment: VerticalAlignment.Top
             	horizontalAlignment: HorizontalAlignment.Center
+            	textStyle.fontSize: FontSize.Large
             	onTextChanging: {
-                	listView.dataModel.setFilter(text); 
+                	listView.dataModel.setFilter(text);
                 }
             }
             
@@ -52,10 +54,12 @@ NavigationPane{
                 Label {
                     text: "Title"
                     horizontalAlignment: HorizontalAlignment.Left
+                    textStyle.fontSize: FontSize.Large
                 }
                 Label {
                     text: "Due"
                     horizontalAlignment: HorizontalAlignment.Right
+                    textStyle.fontSize: FontSize.Large
                 }
             }
 	        
@@ -172,6 +176,7 @@ NavigationPane{
             	onTriggered: {
                     var p = projectArchiveList.createObject();
                     p.listModel = listModel
+                    p.archiveFilter = projectFilter.text
                     navPane.push(p);
                 }
             },
@@ -219,6 +224,7 @@ NavigationPane{
                     backButton: ActionItem {
                         onTriggered: {
                             navPane.pop();
+                            projectFilter.text = archiveFilter;
                         }
                     }
                 }
