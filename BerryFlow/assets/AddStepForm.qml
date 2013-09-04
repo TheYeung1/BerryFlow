@@ -44,43 +44,45 @@ Sheet {
                 }
             }
         }
+        ScrollView {
         
-        Container {
-            topPadding: 5
-            leftPadding: 5
-            rightPadding: 5
-            
-            TextField {
-                id: stepTitle
-                hintText: "Step Name"
-                verticalAlignment: VerticalAlignment.Top
-                horizontalAlignment: HorizontalAlignment.Fill
-            }
-            
-            DateTimePicker {
-                id: stepStartDate
-                title: "Start"
-                mode: DateTimePickerMode.Date
-                value: { new Date(); }
-            }
-            
-            DateTimePicker {
-                id: stepDueDate
-                title: "Due"
-                value: {new Date(); }
-                mode: DateTimePickerMode.Date
-                minimum: stepStartDate.value
-            }
-            
-            TextArea {
-                id: stepDescription
-                hintText: "Description"
-                horizontalAlignment: HorizontalAlignment.Fill
-                preferredHeight: 450
-                maxHeight: 450
-            }
-            
-            //TODO: add list here for members that can be added
-        }
+	        Container {
+	            topPadding: 5
+	            leftPadding: 5
+	            rightPadding: 5
+	            
+	            TextField {
+	                id: stepTitle
+	                hintText: "Step Name"
+	                verticalAlignment: VerticalAlignment.Top
+	                horizontalAlignment: HorizontalAlignment.Fill
+	            }
+	            
+	            DateTimePicker {
+	                id: stepStartDate
+	                title: "Start"
+	                mode: DateTimePickerMode.Date
+	                value: { new Date(); }
+	            }
+	            
+	            DateTimePicker {
+	                id: stepDueDate
+	                title: "Due"
+	                value: {new Date(); }
+	                mode: DateTimePickerMode.Date
+	                minimum: stepStartDate.value
+	            }
+	            
+	            TextArea {
+	                id: stepDescription
+	                hintText: "Description"
+	                horizontalAlignment: HorizontalAlignment.Fill
+	                preferredHeight: 450
+	                maxHeight: 450
+	            }
+	            
+	            //TODO: add list here for members that can be added
+	        }
+	    }
     }
 }

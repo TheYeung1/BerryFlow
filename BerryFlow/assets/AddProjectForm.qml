@@ -44,42 +44,44 @@ Sheet{
                 }
             }
         }
-    	
-    	Container {
-    	    topPadding: 5
-    	    leftPadding: 5
-    	    rightPadding: 5
-    	    
-        	TextField {
-        	    id: projectTitle
-            	hintText: "Project Title" 
-            	verticalAlignment: VerticalAlignment.Top
-            	horizontalAlignment: HorizontalAlignment.Fill
-            }
-        	
-        	DateTimePicker {
-        	    id: projectStartDate
-            	title: "Start"
-            	value: { new Date(); } 
-                mode: DateTimePickerMode.Date
-            }
-        	
-        	DateTimePicker {
-        	    id: projectEndDate
-            	title: "End"
-            	value: { new Date(); } 
-            	minimum: projectStartDate.value
-                mode: DateTimePickerMode.Date
-            }
-        	
-        	TextArea {
-        	    id: projectDescription
-            	hintText: "Description"
-            	horizontalAlignment: HorizontalAlignment.Fill 
-                preferredHeight: 450
-                maxHeight: 450
-            }
-        }
+    	ScrollView {
+         
+	    	Container {
+	    	    topPadding: 5
+	    	    leftPadding: 5
+	    	    rightPadding: 5
+	    	    
+	        	TextField {
+	        	    id: projectTitle
+	            	hintText: "Project Title" 
+	            	verticalAlignment: VerticalAlignment.Top
+	            	horizontalAlignment: HorizontalAlignment.Fill
+	            }
+	        	
+	        	DateTimePicker {
+	        	    id: projectStartDate
+	            	title: "Start"
+	            	value: { new Date(); } 
+	                mode: DateTimePickerMode.Date
+	            }
+	        	
+	        	DateTimePicker {
+	        	    id: projectEndDate
+	            	title: "End"
+	            	value: { new Date(); } 
+	            	minimum: projectStartDate.value
+	                mode: DateTimePickerMode.Date
+	            }
+	        	
+	        	TextArea {
+	        	    id: projectDescription
+	            	hintText: "Description"
+	            	horizontalAlignment: HorizontalAlignment.Fill 
+	                preferredHeight: 450
+	                maxHeight: 450
+	            }
+	        }
+	    }
     	
     }
 }

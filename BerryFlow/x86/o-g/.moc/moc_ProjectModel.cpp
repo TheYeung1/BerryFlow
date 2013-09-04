@@ -22,7 +22,7 @@ static const uint qt_meta_data_ProjectModel[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,10 +36,13 @@ static const uint qt_meta_data_ProjectModel[] = {
      124,   18,  115,   13, 0x02,
      154,  143,   13,   13, 0x02,
      180,  143,   13,   13, 0x02,
-     262,  207,   13,   13, 0x02,
-     363,  302,   13,   13, 0x02,
-     498,  433,   13,   13, 0x02,
-     605,  552,   13,   13, 0x02,
+     207,  143,   13,   13, 0x02,
+     291,  236,   13,   13, 0x02,
+     392,  331,   13,   13, 0x02,
+     527,  462,   13,   13, 0x02,
+     634,  581,   13,   13, 0x02,
+     699,  692,   13,   13, 0x02,
+     718,   18,   53,   13, 0x02,
 
        0        // eod
 };
@@ -52,6 +55,7 @@ static const char qt_meta_stringdata_ProjectModel[] = {
     "data(QVariantList)\0indexPaths\0"
     "removeItems(QVariantList)\0"
     "archiveItems(QVariantList)\0"
+    "unArchiveItems(QVariantList)\0"
     "projectName,projectStart,projectEnd,projectDescription\0"
     "addProject(QString,QDate,QDate,QString)\0"
     "indexPath,stepName,stepStart,stepDue,members,stepDescription\0"
@@ -60,6 +64,8 @@ static const char qt_meta_stringdata_ProjectModel[] = {
     "editProject(QVariantList,QString,QDate,QDate,QString)\0"
     "indexPath,stepName,stepStart,stepEnd,stepDescription\0"
     "editProjectStep(QVariantList,QString,QDate,QDate,QString)\0"
+    "filter\0setFilter(QString)\0"
+    "isFiltered(QVariantList)\0"
 };
 
 void ProjectModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -78,10 +84,14 @@ void ProjectModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             if (_a[0]) *reinterpret_cast< QVariant*>(_a[0]) = _r; }  break;
         case 4: _t->removeItems((*reinterpret_cast< const QVariantList(*)>(_a[1]))); break;
         case 5: _t->archiveItems((*reinterpret_cast< const QVariantList(*)>(_a[1]))); break;
-        case 6: _t->addProject((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDate(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
-        case 7: _t->addProjectStep((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QVariantList(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
-        case 8: _t->editProject((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5]))); break;
-        case 9: _t->editProjectStep((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5]))); break;
+        case 6: _t->unArchiveItems((*reinterpret_cast< const QVariantList(*)>(_a[1]))); break;
+        case 7: _t->addProject((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QDate(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
+        case 8: _t->addProjectStep((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QVariantList(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
+        case 9: _t->editProject((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5]))); break;
+        case 10: _t->editProjectStep((*reinterpret_cast< const QVariantList(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QDate(*)>(_a[3])),(*reinterpret_cast< QDate(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5]))); break;
+        case 11: _t->setFilter((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 12: { bool _r = _t->isFiltered((*reinterpret_cast< const QVariantList(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -121,9 +131,9 @@ int ProjectModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 13;
     }
     return _id;
 }
