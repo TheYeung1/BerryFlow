@@ -181,7 +181,7 @@ NavigationPane{
                 }
             },
 	        ActionItem{
-	            imageSource: "asset:///icons/ic_open_link.png"
+	            imageSource: "asset:///icons/ic_forward_as_bbm.png"
 	            title:"Invite to Download"
 	            onTriggered: {
                 	_inviteToDownload.sendInvite();

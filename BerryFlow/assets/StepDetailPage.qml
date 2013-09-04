@@ -79,7 +79,7 @@ Page {
             start: stepData.start
             end: stepData.due
             description: stepData.detail
-            mode: "edit"
+            mode: "Edit"
             onEditStep: {
                 listModel.editProjectStep(stepIndexPath, title, start, end, description);
                 stepData = listModel.data(stepIndexPath);

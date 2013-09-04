@@ -182,7 +182,7 @@ Page {
         },
         AddProjectForm {
             id: editProjectForm
-            mode: "edit"
+            mode: "Edit"
             title: detailData.title
             start: detailData.start
             end: detailData.end

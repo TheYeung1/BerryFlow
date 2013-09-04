@@ -45,7 +45,6 @@
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The BerryFlow application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
@@ -53,19 +52,21 @@
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
     <author>WinstonYeung</author>
     <authorId>gYAAgP6jvpTaYYd6z97bUE6sn6c</authorId>
+    <description/>
     
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->
    
     <initialWindow>
-        <autoOrients>true</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
+        <autoOrients>false</autoOrients>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
     </initialWindow>
     
     <!--  The category where the application appears. Either core.games or core.media. -->
     <category>core.games</category>
-    <name>Yolo</name>
+    <name>ProjectFlow</name>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/BerryFlow" entry="true" type="Qnx/Elf">BerryFlow</asset>

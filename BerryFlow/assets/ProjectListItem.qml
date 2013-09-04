@@ -143,7 +143,7 @@ Container {
 	            start: startdate
 	            end: duedate
 	            description: projectDescription.text
-	            mode: "edit"
+	            mode: "Edit"
 	            onEditProject: {
                     project.ListItem.view.dataModel.editProject(project.ListItem.indexPath, title, start, end, description);
 	            } 

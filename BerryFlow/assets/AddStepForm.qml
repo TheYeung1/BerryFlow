@@ -11,6 +11,7 @@ Sheet {
     signal editStep(string stepName,
     				date stepStart, date stepDue, string stepDescription);
 
+    
     property alias title: stepTitle.text
     property alias start: stepStartDate.value
     property alias end: stepDueDate.value
@@ -18,9 +19,9 @@ Sheet {
 
     Page {
         titleBar: TitleBar {
-            title: "Add"
+            title: mode
             dismissAction: ActionItem {
-                imageSource: "asset:///icons/ic_add.png"
+                imageSource: "asset:///icons/ic_cancel.png"
                 title: "Cancel"
                 onTriggered: {
                     addStepSheet.close(); 
