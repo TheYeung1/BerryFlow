@@ -1,5 +1,5 @@
 1
-135
+136
 AddProjectForm.qml
 AddStepForm.qml
 ArchiveListView.qml
@@ -128,6 +128,7 @@ icons/ic_view_post.png
 icons/ic_zoom_in.png
 icons/ic_zoom_out.png
 logo.jpg
+logo.png
 main.qml
 ProjectDetailPage.qml
 ProjectListItem.qml
