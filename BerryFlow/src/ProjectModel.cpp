@@ -60,6 +60,12 @@ QString ProjectModel::itemType(const QVariantList &indexPath) {
 		if (project["status"] == "archive"){
 			return QString("archive");
 		}
+		/* if the item does not begin with the filter, then it will return false.
+		we want it to be a "filtered" type so it is filtered out of the list */
+		if (!isFiltered(indexPath)){
+			qDebug("filtered");
+			return QString("filtered");
+		}
 		return QString("project");
 	} else if (indexPath.length() == 2){
 		return QString("step");
@@ -170,10 +176,16 @@ void ProjectModel::removeItems(const QVariantList &indexPaths) {
 	for(int i = indexPaths.count() - 1; i >= 0; i--) {
 		QVariant indexPath = indexPaths.value(i);
 		QVariantList indexPathList = indexPath.toList();
-		//if(indexPathList.count() != 1) continue; // not a proper index path for this data type
-		int index = indexPathList.value(0).toInt(NULL);
-		this->internalDB.removeAt(index);
+		if (indexPathList.count() == 1){
+			int index = indexPathList.value(0).toInt(NULL);
+			this->internalDB.removeAt(index);
+		} else if (indexPathList.count() == 2){
+			QVariantMap& currentProject = (QVariantMap&) this->internalDB[indexPathList.value(0).toInt(NULL)];
+			QVariantList& projectSteps = (QVariantList&) currentProject["steps"];
+			projectSteps.removeAt(indexPathList.value(1).toInt(NULL));
+		}
 		emit itemRemoved(indexPathList);
+		emit itemsChanged(bb::cascades::DataModelChangeType::AddRemove);
 	}
 }
 
@@ -190,6 +202,24 @@ void ProjectModel::archiveItems(const QVariantList &indexPaths) {
 	}
 }
 
+void ProjectModel::setFilter(const QString filter){
+	this->filter  = filter;
+	emit itemsChanged(bb::cascades::DataModelChangeType::AddRemove);
+}
+
+bool ProjectModel::isFiltered(const QVariantList &indexPath){
+	if (this->filter.isNull() || this->filter == ""){
+		return true; // if the filter is empty, then we want everything to display
+	} else if (indexPath.length() == 1){
+		QVariantMap item = this->data(indexPath).toMap();
+		qDebug() << item["title"].toString();
+		qDebug() << this->filter;
+		qDebug() << item["title"].toString().startsWith(this->filter, Qt::CaseInsensitive);
+		return item["title"].toString().startsWith(this->filter, Qt::CaseInsensitive);
+	} else {
+		return false;
+	}
+}
 void ProjectModel::unArchiveItems(const QVariantList &indexPaths) {
 	// Loop through removing the highest item in the list first
 	for(int i = indexPaths.count() - 1; i >= 0; i--) {

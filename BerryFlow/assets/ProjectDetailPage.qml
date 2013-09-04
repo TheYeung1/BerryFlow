@@ -91,6 +91,33 @@ Page {
 	        	onTriggered: {
               		pushStepDetailPage(indexPath);
               	}
+	        	
+                multiSelectAction: MultiSelectActionItem {
+                    multiSelectHandler: stepListView.multiSelectHandler
+                }
+              
+                multiSelectHandler {
+                    status: "None selected"
+                    actions: [
+                        DeleteActionItem {
+                            title: "Delete Selected"
+                            onTriggered: {
+                                stepListView.dataModel.removeItems(stepListView.selectionList());
+                            }
+                        }
+                    ]
+                }
+                
+                onSelectionChanged: {
+                    if (selectionList().length > 1) {
+                        multiSelectHandler.status = selectionList().length +
+                        " items selected";
+                    } else if (selectionList().length == 1) {
+                        multiSelectHandler.status = "1 item selected";
+                    } else {
+                        multiSelectHandler.status = "None selected";
+                    }
+                }
 	        
 	            function pushStepDetailPage(indexPath){
 	                var p = stepDetailPageDefinition.createObject();

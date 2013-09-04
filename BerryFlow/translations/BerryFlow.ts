@@ -17,7 +17,7 @@
 <context>
     <name>ProjectStepItem</name>
     <message>
-        <location filename="../assets/ProjectStepItem.qml" line="67"/>
+        <location filename="../assets/ProjectStepItem.qml" line="68"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>

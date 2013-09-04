@@ -57,6 +57,7 @@ Container {
         ActionSet {
             ActionItem {
                 title: "Edit"
+                imageSource: "asset:///icons/ic_edit.png"
                 onTriggered: {
                     var p = editStepForm.createObject();
                     p.open();
@@ -80,6 +81,7 @@ Container {
                 start: startdate
                 end: duedate
                 description: stepDetail.text
+                mode: "Edit"
                 onEditStep: {
                     stepItem.ListItem.view.dataModel.editProjectStep(stepItem.ListItem.indexPath, title, start, end, description)
                 }
@@ -89,11 +91,11 @@ Container {
     
     function setHighlight (highlighted){
         if (highlighted){
-            project.opacity = 0.9;
-            project.background = Color.create("#0094D9");
+            stepItem.opacity = 0.9;
+            stepItem.background = Color.create("#0094D9");
         } else {
-            project.opacity = 1.0;
-            project.background = null ;
+            stepItem.opacity = 1.0;
+            stepItem.background = null ;
         }
     }
     

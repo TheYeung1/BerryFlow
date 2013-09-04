@@ -35,6 +35,9 @@ NavigationPane{
             	topPadding: 3
             	verticalAlignment: VerticalAlignment.Top
             	horizontalAlignment: HorizontalAlignment.Center
+            	onTextChanging: {
+                	listView.dataModel.setFilter(text); 
+                }
             }
             
             Container {
@@ -92,6 +95,10 @@ NavigationPane{
                          type: "archive"
                          Container {
                          }
+                     },
+                     ListItemComponent {
+                         type: "filtered"
+                         Container{}
                      }
                  ]
                  
@@ -115,6 +122,17 @@ NavigationPane{
                              }
                          }
                      ]
+                 }
+                 
+                 onSelectionChanged: {
+                     if (selectionList().length > 1) {
+                         multiSelectHandler.status = selectionList().length +
+                         " items selected";
+                     } else if (selectionList().length == 1) {
+                         multiSelectHandler.status = "1 item selected";
+                     } else {
+                         multiSelectHandler.status = "None selected";
+                     }
                  }
                  
                  

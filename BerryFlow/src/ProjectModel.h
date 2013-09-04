@@ -43,8 +43,14 @@ public:
 
 	Q_INVOKABLE virtual void editProjectStep(const QVariantList &indexPath, QString stepName, QDate stepStart,
 			QDate stepEnd, QString stepDescription);
+
+	Q_INVOKABLE virtual void setFilter(const QString filter);
+
+	Q_INVOKABLE virtual bool isFiltered(const QVariantList &indexPath);
+
 private:
 	QVariantList internalDB;
+	QString filter;
 	void initDatabase(const QString& filename);
 
 };
