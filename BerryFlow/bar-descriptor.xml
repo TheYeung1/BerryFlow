@@ -66,7 +66,7 @@
     
     <!--  The category where the application appears. Either core.games or core.media. -->
     <category>core.games</category>
-    <name>ProjectFlow</name>
+    <name>Project Workflow</name>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/BerryFlow" entry="true" type="Qnx/Elf">BerryFlow</asset>
