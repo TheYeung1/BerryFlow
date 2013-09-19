@@ -32,7 +32,6 @@ NavigationPane{
             	hintText: "Filter Projects..."
             	leftPadding: 10
             	rightPadding: 10
-            	preferredWidth: 768
             	topPadding: 3
             	verticalAlignment: VerticalAlignment.Top
             	horizontalAlignment: HorizontalAlignment.Center
