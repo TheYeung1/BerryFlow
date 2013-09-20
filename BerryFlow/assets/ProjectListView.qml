@@ -16,6 +16,14 @@ NavigationPane{
                 enabled:{
                     !(_registrationHandler.allowed);
                 }
+            },
+            ActionItem {
+                imageSource: "asset:///icons/ic_entry.png"
+                title: "About"
+                onTriggered: {
+                    var page = projectAboutUsDefinition.createObject();
+                    navPane.push(page);
+                }
             }
         ]
     }
@@ -194,6 +202,18 @@ NavigationPane{
 	
     attachedObjects: [
         // the page that will be pushed on when an item is selected
+        ComponentDefinition {
+          id: projectAboutUsDefinition
+          AboutPage {
+              paneProperties: NavigationPaneProperties {
+                  backButton: ActionItem {
+                      onTriggered: {
+                          navPane.pop();
+                      }
+                  }
+              }
+          }  
+        },
         ComponentDefinition {
             id: projectDetailsPageDefinition
             ProjectDetailPage {

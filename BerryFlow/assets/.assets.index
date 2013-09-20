@@ -1,5 +1,6 @@
 1
-33
+35
+AboutPage.qml
 AddProjectForm.qml
 AddStepForm.qml
 ArchiveListView.qml
@@ -24,6 +25,7 @@ icons/ic_textmessage.png
 icons/ic_view_details.png
 icons/ic_view_list.png
 icons/ic_view_post.png
+images/ProjectWorkFlowFeatured.png
 logo.jpg
 logo.png
 main.qml
